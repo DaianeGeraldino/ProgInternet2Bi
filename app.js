@@ -20,6 +20,32 @@ function cadastrar() {
   }
   erroNome.classList.add('oculto'); // esconde o erro
 
-  // próximo passo
+    // 1. Criar o card
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  // 2. Criar o texto do card
+  const texto = document.createElement('span');
+  texto.textContent = nome;
+
+  // 3. Criar o botão Excluir
+  const btn = document.createElement('button');
+  btn.textContent = 'Excluir';
+  btn.classList.add('btn-excluir');
+
+  // 4. Montar e inserir (appendChild)
+  card.appendChild(texto);
+  card.appendChild(btn);
+  lista.appendChild(card);
+
+  // 5. Limpar o campo
+  inputNome.value = '';
+  inputNome.focus();
+  
+  btn.addEventListener('click', function() {
+    // parentElement navega do botão para o card pai
+    btn.parentElement.remove();
+  });
+
 }
 
