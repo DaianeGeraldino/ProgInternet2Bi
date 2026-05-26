@@ -12,3 +12,15 @@ document.querySelector(inputId).classList.remove('campo-erro');
 document.querySelector(inputId).classList.add('campo-ok');
 document.querySelector(erroId).classList.add('oculto');
 }
+
+const inputNome = document.querySelector('#inputNome');
+inputNome.addEventListener('focus', function() {
+limparErro('#inputNome', '#erroNome');
+});
+inputNome.addEventListener('blur', function() {
+if (inputNome.value.trim() === '') {
+mostrarErro('#inputNome', '#erroNome', 'Nome obrigatorio');
+} else {
+limparErro('#inputNome', '#erroNome');
+}
+});
