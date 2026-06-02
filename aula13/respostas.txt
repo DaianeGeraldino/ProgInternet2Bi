@@ -1,0 +1,16 @@
+1. O que significa 'assíncrono'? O que aconteceria se o fetch() fosse síncrono?
+"Assíncrono" significa que uma tarefa pode ser executada em segundo plano sem bloquear o restante do programa. No caso do fetch(), a página continua funcionando enquanto aguarda a resposta do servidor.
+
+Se o fetch() fosse síncrono, o navegador ficaria "travado" até receber a resposta da requisição. O usuário não conseguiria interagir com a página durante esse tempo, o que deixaria a experiência mais lenta e desagradável.
+________________________________________________________________________
+2. Por que verificamos dados.erro antes de preencher os campos? Verificamos dados.erro para garantir que o CEP informado foi encontrado e que os dados retornados são válidos.
+
+Se não fizermos essa verificação, o programa pode tentar preencher os campos com informações inexistentes ou incorretas, causando erros ou exibindo dados errados para o usuário.
+________________________________________________________________________
+3. As funções mostrarErro() e limparErro() são iguais às da Aula 12. O que isso revela sobre boas práticas de programação?
+Isso revela a importância da reutilização de código. Quando uma função já resolve um problema de forma correta, ela pode ser reaproveitada em diferentes partes do sistema, evitando repetição desnecessária.
+Benefícios dessa prática:
+- Código mais organizado e fácil de entender.
+- Menos duplicação de código.
+- Maior facilidade de manutenção.
+- Menor chance de erros, pois uma função testada pode ser reutilizada várias vezes.
