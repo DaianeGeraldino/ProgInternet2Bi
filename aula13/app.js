@@ -53,3 +53,44 @@ async function buscarCEP(cep) {
         limparEndereco();
     }
 }
+
+inputCEP.addEventListener('focus', function () {
+    statusCEP.textContent = '';
+    limparErro('#inputCEP', '#erroCEP');
+    limparEndereco();
+});
+inputCEP.addEventListener('blur', function () {
+    const cep = inputCEP.value.trim();
+    if (cep === '') {
+        mostrarErro('#inputCEP', '#erroCEP', 'CEP obrigatorio');
+        limparEndereco();
+        return;
+    }
+    if (isNaN(cep) || cep.length !== 8) {
+        mostrarErro('#inputCEP', '#erroCEP', 'CEP: 8 digitos numericos');
+        limparEndereco();
+
+        return;
+    }
+    buscarCEP(cep);
+});
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const logradouro = document.querySelector('#logradouro').value;
+    const inputNumero = document.querySelector('#inputNumero');
+    if (logradouro === '') {
+        mostrarErro('#inputCEP', '#erroCEP', 'Busque um CEP valido primeiro');
+        inputCEP.focus();
+        return;
+    }
+    if (inputNumero.value.trim() === '') {
+        mostrarErro('#inputNumero', '#erroNumero', 'Numero obrigatorio');
+        inputNumero.focus();
+        return;
+    }
+    const endereco = logradouro + ', ' + inputNumero.value.trim()
+        + ' - ' + document.querySelector('#cidade').value
+        + '/' + document.querySelector('#uf').value;
+    alert('Endereco confirmado:\n' + endereco);
+});
